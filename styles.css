@@ -1,4 +1,6 @@
-#heading {
+#heading-1 {
   color: red;
-  font-weight: bold;
+}
+#heading-2 {
+  color: blue;
 }

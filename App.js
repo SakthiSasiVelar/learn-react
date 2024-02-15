@@ -1,9 +1,24 @@
-const heading = React.createElement(
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const heading1 = React.createElement(
   "h1",
   {
-    id: "heading",
+    id: "heading-1",
   },
   "Day 1 of react learning"
 );
+const heading2 = React.createElement(
+  "h2",
+  {
+    id: "heading-2",
+  },
+  "Day 2 of React learning"
+);
+
+const container = React.createElement("div", { id: "container" }, [
+  heading1,
+  heading2,
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);
+root.render(container);

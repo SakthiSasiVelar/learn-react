@@ -1,0 +1,7 @@
+//files which are created by server are removed . so declare that file in git ignore . 
+
+.parcel-cache
+
+dist/
+
+node_modules/

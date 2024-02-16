@@ -1,24 +1,14 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading1 = React.createElement(
-  "h1",
-  {
-    id: "heading-1",
-  },
-  "Day 1 of react learning"
-);
-const heading2 = React.createElement(
-  "h2",
-  {
-    id: "heading-2",
-  },
-  "Day 2 of React learning"
+const title = <h1>Title</h1>;
+
+const Container = () => (
+  <div>
+    {title}
+    <h1>This is h1 tag</h1>
+    <h2>This is h2 tag</h2>
+  </div>
 );
 
-const container = React.createElement("div", { id: "container" }, [
-  heading1,
-  heading2,
-]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(container);
+root.render(<Container />);

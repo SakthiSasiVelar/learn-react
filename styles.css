@@ -1,6 +1,30 @@
-#heading-1 {
-  color: red;
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 3rem;
 }
-#heading-2 {
-  color: blue;
+
+.logo {
+  width: 4rem;
+}
+
+.header > div > ul {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.header > div > ul > li {
+  list-style-type: none;
+}
+
+.foodCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.foodList {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }

@@ -1,27 +1,7 @@
-import ReactDOM from "react-dom/client";
-import React from "react";
+export const IMG_CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360";
 
-const Header = () => {
-  return (
-    <div className="header">
-      <img
-        src="https://logolook.net/wp-content/uploads/2023/04/Swiggy-Emblem.png"
-        className="logo"
-      />
-      <div>
-        <ul>
-          <li>Search</li>
-          <li>Offers</li>
-          <li>Help</li>
-          <li>Sign In</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const food = [
+export const food = [
   {
     id: "750644",
     imageId: "v1674029846/PC_Creative%20refresh/3D_bau/banners_new/Idli.png",
@@ -171,42 +151,3 @@ const food = [
     frequencyCapping: {},
   },
 ];
-
-const FoodCard = (props) => {
-  const { imageId } = props.foodDetails;
-  return (
-    <div className="foodCard">
-      <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360" +
-          imageId
-        }
-      />
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body">
-      <h1>What's on your mind?</h1>
-      <div className="foodList">
-        {food.map((item) => {
-          return <FoodCard foodDetails={item} />;
-        })}
-      </div>
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <>
-      <Header />
-      <Body />
-    </>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);

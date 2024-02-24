@@ -8,5 +8,4 @@ const FoodCard = (props) => {
     </div>
   );
 };
-
 export default FoodCard;

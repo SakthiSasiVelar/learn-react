@@ -1,10 +1,11 @@
-import { food } from "../config";
 import FoodCard from "./FoodCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { food } from "../config";
+import EmptyFilteredData from "./EmptyFilteredDataAlert";
 
 const filterFoodList = (searchText, foodList) => {
   const filteredData = foodList.filter((food) =>
-    food.action.text.includes(searchText)
+    food.action.text.toLowerCase().includes(searchText.toLowerCase())
   );
   return filteredData;
 };
@@ -12,7 +13,24 @@ const filterFoodList = (searchText, foodList) => {
 const Body = () => {
   const [searchText, setSearchText] = useState();
   const [foodList, setFoodList] = useState(food);
-  return (
+  const [filteredFoodList, setFilteredFoodList] = useState(food);
+
+  // async function getFoodList() {
+  //   const foodData = await fetch(
+  //     "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=12.89960&lng=80.22090&carousel=true&third_party_vendor=1"
+  //   );
+  //   const json = await foodData.json();
+  //   setFoodList(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);
+  //   setFilteredFoodList(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);
+  // }
+
+  useEffect(() => {
+    // getFoodList();
+  }, []);
+
+  return foodList?.length < 1 ? (
+    <h1>No data</h1>
+  ) : (
     <div className="body">
       <h1>What's on your mind?</h1>
       <input
@@ -22,20 +40,20 @@ const Body = () => {
       ></input>
       <button
         onClick={() => {
-          if (!searchText) {
-            setFoodList(food);
-          } else {
-            const currentFoodList = filterFoodList(searchText, food);
-            setFoodList(currentFoodList);
-          }
+          const filteredData = filterFoodList(searchText, foodList);
+          setFilteredFoodList(filteredData);
         }}
       >
         Search
       </button>
       <div className="foodList">
-        {foodList.map((item) => {
-          return <FoodCard foodDetails={item} />;
-        })}
+        {filteredFoodList.length === 0 ? (
+          <EmptyFilteredData />
+        ) : (
+          filteredFoodList.map((item) => {
+            return <FoodCard foodDetails={item} key={item.id} />;
+          })
+        )}
       </div>
     </div>
   );

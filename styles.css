@@ -28,3 +28,10 @@
   gap: 0.5rem;
   flex-wrap: wrap;
 }
+
+.shimmer-container {
+  display: flex;
+  margin: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}

@@ -1,35 +1,35 @@
 import FoodCard from "./FoodCard";
 import { useState, useEffect } from "react";
-import { food } from "../config";
 import EmptyFilteredData from "./EmptyFilteredDataAlert";
+import Shimmer from "./Shimmer";
 
 const filterFoodList = (searchText, foodList) => {
   const filteredData = foodList.filter((food) =>
-    food.action.text.toLowerCase().includes(searchText.toLowerCase())
+    food?.action?.text?.toLowerCase().includes(searchText?.toLowerCase())
   );
   return filteredData;
 };
 
 const Body = () => {
   const [searchText, setSearchText] = useState();
-  const [foodList, setFoodList] = useState(food);
-  const [filteredFoodList, setFilteredFoodList] = useState(food);
+  const [foodList, setFoodList] = useState([]);
+  const [filteredFoodList, setFilteredFoodList] = useState([]);
 
-  // async function getFoodList() {
-  //   const foodData = await fetch(
-  //     "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=12.89960&lng=80.22090&carousel=true&third_party_vendor=1"
-  //   );
-  //   const json = await foodData.json();
-  //   setFoodList(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);
-  //   setFilteredFoodList(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);
-  // }
+  async function getFoodList() {
+    const foodData = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await foodData.json();
+    setFoodList(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);
+    setFilteredFoodList(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);
+  }
 
   useEffect(() => {
-    // getFoodList();
+    getFoodList();
   }, []);
 
-  return foodList?.length < 1 ? (
-    <h1>No data</h1>
+  return foodList?.length === 0 ? (
+    <Shimmer />
   ) : (
     <div className="body">
       <h1>What's on your mind?</h1>

@@ -1,0 +1,18 @@
+.logo{
+    width:100px;
+    padding-left:6rem;
+}
+
+.header{
+   margin : 0.5rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.header > ul{
+    list-style-type: none;
+    display: flex;
+    gap:2rem;
+    padding-right: 6rem;
+}
+

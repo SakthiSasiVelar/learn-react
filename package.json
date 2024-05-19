@@ -2,7 +2,6 @@
   "name": "react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -15,7 +14,9 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "formik": "^2.4.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1"
   }
 }
